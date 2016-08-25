@@ -1,4 +1,5 @@
 @background: #ebebeb;
+@orange: #E67410;
 
 body {
   margin: 30px 40px;
@@ -9,18 +10,44 @@ body {
 }
 
 h1 {
-  color: #555;
+  color: @orange;
   font-size: 24px;
 }
 
 h2 {
-  color: #666;
+  color: @orange;
   font-size: 18px;
-  text-transform: uppercase;
 }
 
 .container {
   margin: 20px;
+}
+
+.radio-button-wrapper,
+.item-view-wrapper {
+    width: 100%;
+    float: left;
+    margin: 10px 0px;
+}
+
+.item-view-wrapper {
+  .item-view-container {
+    padding: 10px 0px;
+    border-bottom: 1px dotted #999;
+
+    h2 {
+      padding: 0px 10px;
+    }
+
+    span {
+      color: #999;
+      size: 14px;
+      padding: 0px 10px;
+    }
+  }
+  .item-view-container:hover {
+    background: #f9f9f9;
+  }
 }
 
 .radio-input-wrapper {
@@ -30,4 +57,28 @@ h2 {
   label {
     margin-left: 5px;
   }
+}
+
+.add-item-view-wrapper {
+  float: left;
+  width: 100%;
+  border-radius: 5px;
+  background: #C8CBCC;
+  padding: 20px;
+
+  h2 {
+    margin-top: 0;
+  }
+}
+
+.text-input {
+  margin-right: 10px;
+  height: 30px;
+  width: 200px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.text-input:focus {
+  outline: none;
 }
