@@ -1,6 +1,8 @@
 let React = require('react');
 let ReactDOM = require('react-dom');
-let Radio = require('../common-ui/Radio.jsx');
+let RadioInput = require('../common-ui/radio-input.jsx');
+let ItemView = require('./item-view.jsx');
+let AddItemView = require('./add-item-view.jsx');
 
 let Main = React.createClass({
   getInitialState(){
@@ -27,14 +29,33 @@ let Main = React.createClass({
       }
     ];
 
+    let viewItems = [
+      {
+        title: "Item 1",
+        balance: 200,
+      },
+      {
+        title: "item 2",
+        balance: 400,
+      },
+      {
+        title: "item 3",
+        balance: 1000,
+      }
+    ];
+
     return (
-      <div >
+      <div>
         <h1>Statistics</h1>
-        <Radio
+        <RadioInput
           values={RadioBtnValues}
           checked={0}
           name={"filter-radio"}
           onChange={this.onFilterValueChange} />
+
+        <ItemView items={viewItems} />
+        <AddItemView />
+
       </div>
     )
   }
