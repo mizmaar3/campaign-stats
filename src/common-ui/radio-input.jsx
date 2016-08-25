@@ -29,7 +29,7 @@ let Radio = React.createClass({
     });
 
     return (
-      <div className="radio-inline">
+      <div className="radio-button-wrapper">
         {radioBtnInputs}
        </div>
     );
