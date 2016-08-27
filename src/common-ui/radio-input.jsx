@@ -22,7 +22,7 @@ let Radio = React.createClass({
             type={"radio"}
             name={this.props.name}
             value={item.value}
-            checked={this.props.checked === i}
+            checked={this.props.checked === item.value}
             onChange={this.onChange} />
           <label>{item.label}</label>
         </div> )
