@@ -1,10 +1,12 @@
 let React = require('react');
+let ReactDOM = require('react-dom');
+let ReactRedux = require('react-redux');
+let Actions = require('./actions.js');
 
-let ItemView = React.createClass({
-
+let ItemViewGenerator = React.createClass({
   render() {
-
-    let records = this.props.items.map((item, i) => {
+    let items = this.props.items || [];
+    let records = items.map((item, i) => {
       return (
         <div key={"view"+i} className="item-view-container">
           <h2>{item.title}</h2>
@@ -21,5 +23,17 @@ let ItemView = React.createClass({
   }
 
 });
+
+
+
+let ItemView = ReactRedux.connect(
+  function mapStateToProps(state) {
+      return { items: state };
+  },
+  function mapDispatchToProps(dispatch) {
+    return {
+      item: (title, balance) => dispatch(Action.addItem(title, balance))
+    }
+  })(ItemViewGenerator);
 
 module.exports = ItemView;
