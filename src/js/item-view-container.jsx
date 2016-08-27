@@ -29,11 +29,6 @@ let ItemViewGenerator = React.createClass({
 let ItemView = ReactRedux.connect(
   function mapStateToProps(state) {
       return { items: state };
-  },
-  function mapDispatchToProps(dispatch) {
-    return {
-      item: (title, balance) => dispatch(Action.addItem(title, balance))
-    }
   })(ItemViewGenerator);
 
 module.exports = ItemView;
