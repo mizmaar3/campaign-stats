@@ -1,9 +1,16 @@
 let React = require('react');
 let ReactDOM = require('react-dom');
 let RadioInput = require('../common-ui/radio-input.jsx');
-let ItemView = require('./item-view.jsx');
+let ItemView = require('./item-view-container.jsx');
 let AddItemView = require('./add-item-view.jsx');
+let Reducer = require('./reducer.js');
+let Actions = require('./actions.js');
+let Redux = require('redux');
+let ReactRedux = require('react-redux');
+let Store = require('./items-store.jsx');
 
+top.store = Store;
+top.action = Actions;
 let Main = React.createClass({
   getInitialState(){
     return {
@@ -11,7 +18,9 @@ let Main = React.createClass({
     }
   },
   onFilterValueChange(value) {
-    console.log(value);
+    this.setState({
+      filterBy: value
+    });
   },
   render() {
     let RadioBtnValues = [
@@ -29,31 +38,20 @@ let Main = React.createClass({
       }
     ];
 
-    let viewItems = [
-      {
-        title: "Item 1",
-        balance: 200,
-      },
-      {
-        title: "item 2",
-        balance: 400,
-      },
-      {
-        title: "item 3",
-        balance: 1000,
-      }
-    ];
 
     return (
       <div>
         <h1>Statistics</h1>
         <RadioInput
           values={RadioBtnValues}
-          checked={0}
+          checked={this.state.filterBy}
           name={"filter-radio"}
           onChange={this.onFilterValueChange} />
 
-        <ItemView items={viewItems} />
+        <ReactRedux.Provider store={Store} >
+          <ItemView  />
+        </ReactRedux.Provider>
+
         <AddItemView />
 
       </div>
