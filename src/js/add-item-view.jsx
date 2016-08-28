@@ -3,7 +3,6 @@ let ReactDOM = require('react-dom');
 let ItemActions = require('./items-actions.js');
 let ItemStore = require('./items-store.jsx');
 let ValidationUtils = require('./validation-utils.js');
-let _ = require('lodash');
 
 
 let AddItemView = React.createClass({
@@ -19,6 +18,7 @@ let AddItemView = React.createClass({
     let title = this.refs.campaignName.value;
     let balance = this.refs.campaignBalance.value;
     let errors = this.validationCheck();
+    // Add item when there is no error
     if(errors.length === 0) {
       ItemStore.dispatch(ItemActions.addItem(title, balance));
     }
@@ -29,7 +29,6 @@ let AddItemView = React.createClass({
   * TODO: make input fields as common-ui
   * and set validation as prop so it can be handled explicitly
   **/
-
   validationCheck() {
     let validationReply = [];
 

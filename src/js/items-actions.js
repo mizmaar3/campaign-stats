@@ -1,4 +1,3 @@
-let uid = require('./constants.js').uid;
 let C = require('./constants');
 
 /**
@@ -12,7 +11,7 @@ let ItemActions = {
     return {
       type: C.ADD_ITEM,
       payload: {
-        id: uid(),
+        id: C.uid(),
         title: title,
         balance: balance
       }

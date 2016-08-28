@@ -33,7 +33,7 @@ let ItemViewGenerator = React.createClass({
       });
     } else {
       eachItemView = (
-        <div> No Record Found...</div>
+        <div> No Record Available...</div>
       )
     }
 

@@ -18,7 +18,6 @@ let Radio = React.createClass({
       return (
         <div key={"radio-wrapper-"+i} className="radio-input-wrapper">
           <input
-            key={i}
             type={"radio"}
             name={this.props.name}
             value={item.value}

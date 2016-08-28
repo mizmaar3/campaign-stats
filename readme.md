@@ -94,4 +94,6 @@ and goto http://127.0.0.1:9340 or http://localhost:9340
 
 - 1999's JS Confirm popup when you click `delete` button needs modernization
 
+- Unit tests and test automation needed to be implemented
+
 - Of course UI needs improvements
