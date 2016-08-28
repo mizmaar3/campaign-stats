@@ -5,8 +5,11 @@ let Data = require('../data/data.js');
 let _ = require('lodash');
 let C = require('./constants.js');
 
-let InitialState = _.extend(Data,
-                  {
+
+/**
+* TODO: Save filterBy as separate store
+**/
+let InitialState = _.extend(Data, {
                     filterBy: C.FILTER_NONE,
                     filteredItems: Data.records
                   });
