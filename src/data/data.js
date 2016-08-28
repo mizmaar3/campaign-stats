@@ -33,6 +33,5 @@ let Data ={
     }
   ]
 };
-Data.filteredItems = Data.records;
 
 module.exports = Data;
