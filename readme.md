@@ -16,7 +16,7 @@ Small app to view statistics of campaign offers and add them into the store. Cod
 First, clone the repo via git:
 
 ```bash
-git clone https://github.com/mizmaar3/campaign-stat your-folder-name
+git clone https://github.com/mizmaar3/campaign-stats your-folder-name
 ```
 
 And then install dependencies.
