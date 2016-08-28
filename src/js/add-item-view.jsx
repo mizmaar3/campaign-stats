@@ -5,7 +5,7 @@ let Store = require('./items-store.jsx');
 
 
 let AddItemView = React.createClass({
-  onSubmitClick(e) {
+  onSubmitClick() {
     let title = this.refs.campaignName.value;
     let balance = this.refs.campaignBalance.value;
     Store.dispatch(Actions.addItem(title, balance));

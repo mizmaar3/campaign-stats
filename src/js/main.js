@@ -8,16 +8,18 @@ let Actions = require('./actions.js');
 let Redux = require('redux');
 let ReactRedux = require('react-redux');
 let Store = require('./items-store.jsx');
+let C = require('./constants');
 
 top.store = Store;
 top.action = Actions;
 let Main = React.createClass({
   getInitialState(){
     return {
-      filterBy: null
+      filterBy: C.FILTER_NONE
     }
   },
   onFilterValueChange(value) {
+    Store.dispatch(Actions.filterItems(value));
     this.setState({
       filterBy: value
     });
@@ -26,15 +28,15 @@ let Main = React.createClass({
     let RadioBtnValues = [
       {
         label: "All",
-        value: "all",
+        value: C.FILTER_NONE,
       },
       {
         label: "Positive Balance",
-        value: "positive-balance",
+        value: C.FILTER_POSITIVE,
       },
       {
         label: "Negative Balance",
-        value: "negative-balance",
+        value: C.FILTER_NEGATIVE,
       }
     ];
 
@@ -42,6 +44,7 @@ let Main = React.createClass({
     return (
       <div>
         <h1>Statistics</h1>
+
         <RadioInput
           values={RadioBtnValues}
           checked={this.state.filterBy}
@@ -49,7 +52,7 @@ let Main = React.createClass({
           onChange={this.onFilterValueChange} />
 
         <ReactRedux.Provider store={Store} >
-          <ItemView  />
+          <ItemView />
         </ReactRedux.Provider>
 
         <AddItemView />
