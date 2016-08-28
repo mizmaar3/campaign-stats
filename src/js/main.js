@@ -9,8 +9,6 @@ let ReactRedux = require('react-redux');
 let ItemStore = require('./items-store.jsx');
 let C = require('./constants');
 
-top.store = ItemStore;
-top.action = ItemActions;
 let Main = React.createClass({
   getInitialState(){
     return {

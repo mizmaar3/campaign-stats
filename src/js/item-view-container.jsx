@@ -11,8 +11,11 @@ let ItemActions = require('./items-actions.js');
 
 let ItemViewGenerator = React.createClass({
   onItemDeleteBtnClick(e) {
-    let itemIdToRemove = e.target.getAttribute("data-id");
-    ItemStore.dispatch(ItemActions.deleteItem(itemIdToRemove));
+    let confirmation = confirm("Click OK to confirm deletion!");
+    if(confirmation) {
+      let itemIdToRemove = e.target.getAttribute("data-id");
+      ItemStore.dispatch(ItemActions.deleteItem(itemIdToRemove));
+    }
   },
   render() {
     let items = this.props.items || [];

@@ -18,8 +18,10 @@ let AddItemView = React.createClass({
   onSubmitClick() {
     let title = this.refs.campaignName.value;
     let balance = this.refs.campaignBalance.value;
-    top.validat = this.validationCheck();
-    ItemStore.dispatch(ItemActions.addItem(title, balance));
+    let errors = this.validationCheck();
+    if(errors.length === 0) {
+      ItemStore.dispatch(ItemActions.addItem(title, balance));
+    }
   },
 
   /**
