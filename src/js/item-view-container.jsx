@@ -28,7 +28,7 @@ let ItemViewGenerator = React.createClass({
 
 let ItemView = ReactRedux.connect(
   function mapStateToProps(state) {
-      return { items: state };
+      return { items: state.filteredItems };
   })(ItemViewGenerator);
 
 module.exports = ItemView;

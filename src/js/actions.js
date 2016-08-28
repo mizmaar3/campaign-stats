@@ -1,9 +1,10 @@
-const uid = () => Math.random().toString(34).slice(2);
+let uid = require('./constants.js').uid;
+let C = require('./constants');
 
 let Actions = {
   addItem: (title, balance) => {
     return {
-      type: 'ADD_ITEM',
+      type: C.ADD_ITEM,
       payload: {
         id: uid(),
         title: title,
@@ -14,13 +15,20 @@ let Actions = {
 
   deleteItem: (id) => {
     return {
-      type: 'DELETE_ITEM',
+      type: C.DELETE_ITEM,
       payload: {
         id: id
       }
     }
+  },
+  filterItems: (filterType) => {
+    return {
+      type: C.FILTER_ITEM,
+      payload: {
+        filterType: filterType
+      }
+    }
   }
-
 };
 
 
