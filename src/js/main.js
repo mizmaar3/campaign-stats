@@ -3,15 +3,14 @@ let ReactDOM = require('react-dom');
 let RadioInput = require('../common-ui/radio-input.jsx');
 let ItemView = require('./item-view-container.jsx');
 let AddItemView = require('./add-item-view.jsx');
-let Reducer = require('./reducer.js');
-let Actions = require('./actions.js');
+let ItemActions = require('./items-actions.js');
 let Redux = require('redux');
 let ReactRedux = require('react-redux');
-let Store = require('./items-store.jsx');
+let ItemStore = require('./items-store.jsx');
 let C = require('./constants');
 
-top.store = Store;
-top.action = Actions;
+top.store = ItemStore;
+top.action = ItemActions;
 let Main = React.createClass({
   getInitialState(){
     return {
@@ -19,7 +18,7 @@ let Main = React.createClass({
     }
   },
   onFilterValueChange(value) {
-    Store.dispatch(Actions.filterItems(value));
+    ItemStore.dispatch(ItemActions.filterItems(value));
     this.setState({
       filterBy: value
     });
@@ -51,7 +50,7 @@ let Main = React.createClass({
           name={"filter-radio"}
           onChange={this.onFilterValueChange} />
 
-        <ReactRedux.Provider store={Store} >
+        <ReactRedux.Provider store={ItemStore} >
           <ItemView />
         </ReactRedux.Provider>
 

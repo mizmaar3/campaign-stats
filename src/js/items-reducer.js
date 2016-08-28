@@ -1,21 +1,25 @@
 let _ = require('lodash');
 let C = require('./constants');
 
-function getFilteredItems(records, type) {
+/**
+* Function to return  filtered ItemStore records
+* Depending on FilterType
+*/
+function getFilteredItems(records, filterType) {
   let filteredItems;
-  if (type === C.FILTER_POSITIVE) {
+  if (filterType === C.FILTER_POSITIVE) {
     filteredItems = _.filter(records, (itm) => {
       return itm.balance > -1;
     });
   }
 
-  if (type === C.FILTER_NEGATIVE) {
+  if (filterType === C.FILTER_NEGATIVE) {
     filteredItems = _.filter(records, (itm) => {
       return itm.balance < 0;
     });
   }
 
-  if (type === C.FILTER_NONE) {
+  if (filterType === C.FILTER_NONE) {
     filteredItems = records;
   }
 
@@ -24,17 +28,32 @@ function getFilteredItems(records, type) {
 
 let Reducer = (state={}, action) => {
   switch(action.type) {
+    /**
+    * New Item addition in records
+    **/
     case C.ADD_ITEM:
       return {
         filterBy: state.filterBy,
         records: [...state.records, action.payload],
         filteredItems: getFilteredItems([...state.records, action.payload], state.filterBy)
       }
+
+    /**
+    * Delete item from records
+    **/
     case C.DELETE_ITEM:
-      state = _.filter(state, (itm) => {
+      let records = _.filter(state.records, (itm) => {
         return itm.id != action.payload.id
       });
-     return [...state]
+     return {
+       filterBy: state.filterBy,
+       records: records,
+       filteredItems: getFilteredItems(records, state.filterBy)
+     }
+
+   /**
+   * Filter record items
+   **/
     case C.FILTER_ITEM:
       let filtered = getFilteredItems(state.records, action.payload.filterType);
       return {

@@ -1,14 +1,17 @@
 let React = require('react');
 let ReactDOM = require('react-dom');
-let Actions = require('./actions.js');
-let Store = require('./items-store.jsx');
+let ItemActions = require('./items-actions.js');
+let ItemStore = require('./items-store.jsx');
 
 
 let AddItemView = React.createClass({
+  /**
+  * dispatch addIem when submit click
+  **/
   onSubmitClick() {
     let title = this.refs.campaignName.value;
     let balance = this.refs.campaignBalance.value;
-    Store.dispatch(Actions.addItem(title, balance));
+    ItemStore.dispatch(ItemActions.addItem(title, balance));
   },
 
   render() {

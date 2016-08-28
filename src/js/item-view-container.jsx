@@ -1,7 +1,11 @@
 let React = require('react');
 let ReactDOM = require('react-dom');
 let ReactRedux = require('react-redux');
-let Actions = require('./actions.js');
+
+/**
+* ItemViewGenerator:
+* It defines view of each item
+**/
 
 let ItemViewGenerator = React.createClass({
   render() {
@@ -25,7 +29,10 @@ let ItemViewGenerator = React.createClass({
 });
 
 
-
+/**
+* Connect Redux to ItemViewGenerator component
+* So it can listen ItemStore state
+**/
 let ItemView = ReactRedux.connect(
   function mapStateToProps(state) {
       return { items: state.filteredItems };
