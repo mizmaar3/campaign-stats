@@ -90,8 +90,6 @@ and goto http://127.0.0.1:9340 or http://localhost:9340
 
 - Input field validation needs to be more visible and more structured
 
-- Currently Item FilterType is stored in item-store, it should be a separate store
-
 - 1999's JS Confirm popup when you click `delete` button needs modernization
 
 - Unit tests and test automation needed to be implemented
