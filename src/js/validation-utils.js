@@ -1,10 +1,13 @@
-let ValidationUtils = {
+const ValidationUtils = {
+
   isEmpty: (value = '') => {
     return value.length === 0
   },
+
   isNumber: (value = '') => {
     return !!isNaN(value);
   }
-}
 
-module.exports = ValidationUtils;
+};
+
+export default ValidationUtils;

@@ -1,5 +1,7 @@
-let uid = require('../js/constants.js').uid;
-let Data ={
+import C from '../js/constants.js';
+const uid = C.uid;
+
+const Data ={
   records: [
     {
       id: uid(),
@@ -34,4 +36,4 @@ let Data ={
   ]
 };
 
-module.exports = Data;
+export default Data;

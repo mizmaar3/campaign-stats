@@ -1,11 +1,11 @@
-let _ = require('lodash');
-let C = require('./constants');
+import _ from 'lodash';
+import C from './constants';
 
 /**
 * Function to return  filtered ItemStore records
 * Depending on FilterType
 */
-function getFilteredItems(records, filterType) {
+const getFilteredItems = (records, filterType) => {
   let filteredItems;
   if (filterType === C.FILTER_POSITIVE) {
     filteredItems = _.filter(records, (itm) => {
@@ -26,7 +26,7 @@ function getFilteredItems(records, filterType) {
   return filteredItems;
 }
 
-let Reducer = (state={}, action) => {
+const Reducer = (state={}, action) => {
   switch(action.type) {
     /**
     * New Item addition in records
@@ -67,4 +67,4 @@ let Reducer = (state={}, action) => {
 
 };
 
-module.exports = Reducer;
+export default Reducer;

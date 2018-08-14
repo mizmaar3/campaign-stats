@@ -1,4 +1,4 @@
-module.exports = {
+const C = {
   ADD_ITEM: "ADD_ITEM",
   DELETE_ITEM: "DELETE_ITEM",
   FILTER_ITEM: "FILTER_ITEM",
@@ -7,3 +7,5 @@ module.exports = {
   FILTER_NONE: "ALL",
   uid: () => Math.random().toString(20).slice(2)
 };
+
+export default C;

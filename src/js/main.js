@@ -1,28 +1,34 @@
-let React = require('react');
-let ReactDOM = require('react-dom');
-let RadioInput = require('../common-ui/radio-input.jsx');
-let ItemView = require('./item-view-container.jsx');
-let AddItemView = require('./add-item-view.jsx');
-let ItemActions = require('./items-actions.js');
-let Redux = require('redux');
-let ReactRedux = require('react-redux');
-let ItemStore = require('./items-store.jsx');
-let C = require('./constants');
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import RadioInput from '../common-ui/radio-input.jsx';
+import ItemView from './item-view-container.jsx';
+import AddItemView from './add-item-view.jsx';
+import ItemActions from './items-actions.js';
+import Redux from 'redux';
+import { Provider } from 'react-redux';
+import ItemStore from './items-store.jsx';
+import C from './constants';
+import '../less/main.less';
 
-let Main = React.createClass({
-  getInitialState(){
-    return {
+class Main extends Component {
+  constructor() {
+    super()
+    this.state = {
       filterBy: C.FILTER_NONE
     }
-  },
+
+    this.onFilterValueChange = this.onFilterValueChange.bind(this);
+  }
+
   onFilterValueChange(value) {
     ItemStore.dispatch(ItemActions.filterItems(value));
     this.setState({
       filterBy: value
     });
-  },
+  }
+
   render() {
-    let RadioBtnValues = [
+    const RadioBtnValues = [
       {
         label: "All",
         value: C.FILTER_NONE,
@@ -48,15 +54,16 @@ let Main = React.createClass({
           name={"filter-radio"}
           onChange={this.onFilterValueChange} />
 
-        <ReactRedux.Provider store={ItemStore} >
+        <Provider store={ItemStore} >
           <ItemView />
-        </ReactRedux.Provider>
+        </Provider>
 
         <AddItemView />
 
       </div>
     )
   }
-});
+}
+
 
 ReactDOM.render(<Main />, document.getElementById("main"));

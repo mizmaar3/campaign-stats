@@ -31,34 +31,16 @@ $ cd your-folder-name && npm install
 Run this command to build and bundle the project.
 
 ```bash
-$ npm run build
+$ npm start
 ```
 
-or simple run
+It will open index.html into your default browser
 
-```bash
-$ gulp
-```
 
 To get minified+uglified version of bundle.js please run
 
 ```bash
 $ npm run release
-```
-
-
-inside your project folder
-
-
-## Start Server
-
-To start local server, open another terminal window and run
-
-```bash
-$ npm run start
-```
-
-and goto http://127.0.0.1:9340 or http://localhost:9340
 
 
 ## Brief Code Explanation

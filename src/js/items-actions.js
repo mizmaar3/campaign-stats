@@ -1,9 +1,9 @@
-let C = require('./constants');
+import C from './constants';
 
 /**
 * All the actions appilcable in this app
 */
-let ItemActions = {
+const ItemActions = {
   /**
   * When item added send its uid, title, balance to ItemStore
   **/
@@ -41,5 +41,4 @@ let ItemActions = {
   }
 };
 
-
-module.exports = ItemActions;
+export default ItemActions;

@@ -1,28 +1,32 @@
-let React = require('react');
-let ReactDOM = require('react-dom');
-let ItemActions = require('./items-actions.js');
-let ItemStore = require('./items-store.jsx');
-let ValidationUtils = require('./validation-utils.js');
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import ItemActions from './items-actions.js';
+import ItemStore from './items-store.jsx';
+import ValidationUtils from './validation-utils.js';
 
-
-let AddItemView = React.createClass({
-  getInitialState(){
-    return {
+class AddItemView extends Component {
+  constructor() {
+    super();
+    this.state = {
       errors: []
     }
-  },
+
+    this.onSubmitClick = this.onSubmitClick.bind(this);
+    this.validationCheck = this.validationCheck.bind(this);
+  }
+
   /**
   * dispatch addIem when submit click
   **/
   onSubmitClick() {
-    let title = this.refs.campaignName.value;
-    let balance = this.refs.campaignBalance.value;
-    let errors = this.validationCheck();
+    const title = this.refs.campaignName.value;
+    const balance = this.refs.campaignBalance.value;
+    const errors = this.validationCheck();
     // Add item when there is no error
     if(errors.length === 0) {
       ItemStore.dispatch(ItemActions.addItem(title, balance));
     }
-  },
+  }
 
   /**
   * Lazy Validation Check
@@ -51,7 +55,7 @@ let AddItemView = React.createClass({
       errors: [...validationReply]
     });
     return validationReply;
-  },
+  }
 
   render() {
 
@@ -103,6 +107,6 @@ let AddItemView = React.createClass({
     )
   }
 
-});
+}
 
-module.exports = AddItemView;
+export default AddItemView;

@@ -1,19 +1,19 @@
-let Redux = require('redux');
-let ItemReducer = require('./items-reducer.js');
-let ReactRedux = require('react-redux');
-let Data = require('../data/data.js');
-let _ = require('lodash');
-let C = require('./constants.js');
+import { createStore } from 'redux'
+import ItemReducer from './items-reducer.js';
+import ReactRedux from 'react-redux';
+import Data from '../data/data.js';
+import _ from 'lodash';
+import C from './constants.js';
 
 
 /**
 * TODO: Save filterBy as separate store
 **/
-let InitialState = _.extend(Data, {
+const InitialState = _.extend(Data, {
                     filterBy: C.FILTER_NONE,
                     filteredItems: Data.records
                   });
 
-let ItemsStore = Redux.createStore(ItemReducer, InitialState);
+const ItemsStore = createStore(ItemReducer, InitialState);
 
-module.exports = ItemsStore;
+export default ItemsStore;

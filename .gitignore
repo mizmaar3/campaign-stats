@@ -3,3 +3,4 @@ node_modules
 package-noneed.json
 *.log
 .git
+package-lock.json

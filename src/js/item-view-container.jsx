@@ -1,22 +1,28 @@
-let React = require('react');
-let ReactDOM = require('react-dom');
-let ReactRedux = require('react-redux');
-let ItemStore = require('./items-store.jsx');
-let ItemActions = require('./items-actions.js');
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import { connect } from 'react-redux'
+import ItemStore from './items-store.jsx';
+import ItemActions from './items-actions.js';
 
 /**
 * ItemViewGenerator:
 * It defines view of each item
 **/
 
-let ItemViewGenerator = React.createClass({
+class ItemViewGenerator extends Component  {
+  constructor() {
+    super();
+    this.onItemDeleteBtnClick = this.onItemDeleteBtnClick.bind(this);
+  }
+
   onItemDeleteBtnClick(e) {
-    let confirmation = confirm("Click OK to confirm deletion!");
-    if(confirmation) {
-      let itemIdToRemove = e.target.getAttribute("data-id");
+    const confirmation = confirm("Click OK to confirm deletion!");
+    if (confirmation) {
+      const itemIdToRemove = e.target.getAttribute("data-id");
       ItemStore.dispatch(ItemActions.deleteItem(itemIdToRemove));
     }
-  },
+  }
+
   render() {
     let items = this.props.items || [];
     let eachItemView = [];
@@ -43,17 +49,20 @@ let ItemViewGenerator = React.createClass({
       </div>
     )
   }
-
-});
+}
 
 
 /**
 * Connect Redux to ItemViewGenerator component
 * So it can listen ItemStore state
 **/
-let ItemView = ReactRedux.connect(
+const ItemView = connect(
   function mapStateToProps(state) {
-      return { items: state.filteredItems };
-  })(ItemViewGenerator);
+    return {
+      items: state.filteredItems
+    };
+  }
+)(ItemViewGenerator);
 
-module.exports = ItemView;
+
+export default ItemView;
